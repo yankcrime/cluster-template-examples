@@ -100,6 +100,13 @@ spec:
       {{- end }}
     {{- end }}
     {{- end }}
+    machineGlobalConfig:
+      # CNI Plugin to deploy, one of none, canal, cilium (default: "canal")
+      {{- if .Values.rke.machineGlobalConfig.cni }}
+      cni: {{ .Values.rke.machineGlobalConfig.cni }}
+      {{- else }}
+      cni: calico
+      {{- end }}
     controlPlaneConfig:
       # Path to the file that defines the audit policy configuration
       # audit-policy-file: ""
@@ -109,12 +116,6 @@ spec:
       # cluster-dns: ""
       # Cluster Domain (default: "cluster.local")
       # cluster-domain: ""
-      # CNI Plugin to deploy, one of none, canal, cilium (default: "canal")
-      {{- if .Values.rke.controlPlaneConfig.cni }}
-      cni: {{ .Values.rke.controlPlaneConfig.cni }}
-      {{- else }}
-      cni: calico
-      {{- end }}
       # Do not deploy packaged components and delete any deployed components (valid items: rke2-coredns, rke2-ingress-nginx, rke2-kube-proxy, rke2-metrics-server)
       # disable: false
       # Disable automatic etcd snapshots
