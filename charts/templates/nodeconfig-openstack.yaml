@@ -1,0 +1,120 @@
+{{- if eq .Values.cloudprovider "openstack" }}
+{{- range $index, $nodepool := .Values.nodepools }}
+apiVersion: rke-machine-config.cattle.io/v1
+kind: OpenstackConfig
+metadata:
+  name: {{ $nodepool.name }}
+  namespace: fleet-default
+applicationCredentialId: {{ $nodepool.applicationCredentialId }}
+applicationCredentialName: {{ $nodepool.applicationCredentialName }}
+applicationCredentialSecret: {{ $nodepool.applicationCredentialSecret }}
+authUrl: {{ $nodepool.authUrl }}
+availabilityZone: {{ $nodepool.availabilityZone }}
+bootFromVolume: false
+cacert: {{ $nodepool.cacert }}
+configDrive: false
+common:
+{{- if $nodepool.labels }}
+  labels:
+{{ toYaml $nodepool.labels | indent 4 }}
+{{- end }}
+{{- if $nodepool.taints }}
+  taints:
+{{ toYaml $nodepool.taints | indent 4 }}
+{{- end }}
+domainId: {{ $nodepool.domainId }}
+domainName: {{ $nodepool.domainName }}
+endpointType: {{ $nodepool.endpointType }}
+flavorId: {{ $nodepool.flavorId }}
+flavorName: {{ $nodepool.flavorName }}
+floatingipPool: {{ $nodepool.floatingipPool }}
+imageId: {{ $nodepool.imageId }}
+imageName: {{ $nodepool.imageName }}
+insecure: {{ $nodepool.insecure }}
+ipVersion: "{{ $nodepool.ipVersion }}"
+keypairName: {{ $nodepool.keypairName }}
+netId: {{ $nodepool.netId }}
+netName: {{ $nodepool.netName }}
+novaNetwork: false
+password: {{ $nodepool.password }}
+privateKeyFile: {{ toYaml $nodepool.privateKeyFile | indent 2 }}
+region: {{ $nodepool.region }}
+secGroups: {{ $nodepool.secGroups }}
+sshPort: "{{ $nodepool.sshPort }}"
+sshUser: {{ $nodepool.sshUser }}
+tenantDomainId: {{ $nodepool.tenantDomainId }}
+tenantDomainName: {{ $nodepool.tenantDomainName }}
+tenantId: {{ $nodepool.tenantId }}
+tenantName: {{ $nodepool.tenantName }}
+userDataFile: {{ $nodepool.userDataFile }}
+userDomainId: {{ $nodepool.userDomainId }}
+userDomainName: {{ $nodepool.userDomainName }}
+userId: {{ $nodepool.userId }}
+username: {{ $nodepool.username }}
+volumeDevicePath: {{ $nodepool.volumedevicepath }}
+volumeId: {{ $nodepool.volumeId }}
+volumeName: {{ $nodepool.volumeName }}
+volumeSize: {{ $nodepool.volumeSize }}
+volumeType: {{ $nodepool.volumeType }}
+---
+{{- end }}
+{{ $nodepool := .Values.nodepool }}
+{{- if $nodepool }}
+apiVersion: rke-machine-config.cattle.io/v1
+kind: OpenstackConfig
+metadata:
+  name: {{ $nodepool.name }}
+  namespace: fleet-default
+applicationCredentialId: {{ $nodepool.applicationCredentialId }}
+applicationCredentialName: {{ $nodepool.applicationCredentialName }}
+applicationCredentialSecret: {{ $nodepool.applicationCredentialSecret }}
+authUrl: {{ $nodepool.authUrl }}
+availabilityZone: {{ $nodepool.availabilityZone }}
+bootFromVolume: false
+cacert: {{ $nodepool.cacert }}
+configDrive: false
+common:
+{{- if $nodepool.labels }}
+  labels:
+{{ toYaml $nodepool.labels | indent 4 }}
+{{- end }}
+{{- if $nodepool.taints }}
+  taints:
+{{ toYaml $nodepool.taints | indent 4 }}
+{{- end }}
+domainId: {{ $nodepool.domainId }}
+domainName: {{ $nodepool.domainName }}
+endpointType: {{ $nodepool.endpointType }}
+flavorId: {{ $nodepool.flavorId }}
+flavorName: {{ $nodepool.flavorName }}
+floatingipPool: {{ $nodepool.floatingipPool }}
+imageId: {{ $nodepool.imageId }}
+imageName: {{ $nodepool.imageName }}
+insecure: {{ $nodepool.insecure }}
+ipVersion: "{{ $nodepool.ipVersion }}"
+keypairName: {{ $nodepool.keypairName }}
+netId: {{ $nodepool.netId }}
+netName: {{ $nodepool.netName }}
+novaNetwork: false
+password: {{ $nodepool.password }}
+privateKeyFile: {{ $nodepool.privateKeyFile }}
+region: {{ $nodepool.region }}
+secGroups: {{ $nodepool.secGroups }}
+sshPort: "{{ $nodepool.sshPort }}"
+sshUser: {{ $nodepool.sshUser }}
+tenantDomainId: {{ $nodepool.tenantDomainId }}
+tenantDomainName: {{ $nodepool.tenantDomainName }}
+tenantId: {{ $nodepool.tenantId }}
+tenantName: {{ $nodepool.tenantName }}
+userDataFile: {{ $nodepool.userDataFile }}
+userDomainId: {{ $nodepool.userDomainId }}
+userDomainName: {{ $nodepool.userDomainName }}
+userId: {{ $nodepool.userId }}
+username: {{ $nodepool.username }}
+volumeDevicePath: {{ $nodepool.volumedevicepath }}
+volumeId: {{ $nodepool.volumeId }}
+volumeName: {{ $nodepool.volumeName }}
+volumeSize: {{ $nodepool.volumeSize }}
+volumeType: {{ $nodepool.volumeType }}
+{{- end }}
+{{- end }}
