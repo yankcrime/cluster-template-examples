@@ -19,7 +19,7 @@ spec:
   kubernetesVersion: {{ .Values.kubernetesVersion }}
   {{- end }}
   # enable network policy
-  enableNetworkPolicy: true
+  enableNetworkPolicy: {{ .Values.enableNetworkPolicy }}
   # specify rancher helm chart values deployed into downstream cluster
   # rancherValues: {}
   rkeConfig:
@@ -102,7 +102,7 @@ spec:
     {{- end }}
     machineGlobalConfig:
       # CNI Plugin to deploy, one of none, canal, cilium (default: "canal")
-      {{- if .Values.rke.machineGlobalConfig.cni }}
+      {{- if ((.Values.rke.machineGlobalConfig).cni) }}
       cni: {{ .Values.rke.machineGlobalConfig.cni }}
       {{- else }}
       cni: calico
