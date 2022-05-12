@@ -46,7 +46,7 @@ tenantDomainId: {{ $nodepool.tenantDomainId }}
 tenantDomainName: {{ $nodepool.tenantDomainName }}
 tenantId: {{ $nodepool.tenantId }}
 tenantName: {{ $nodepool.tenantName }}
-userDataFile: {{ $nodepool.userDataFile }}
+userDataFile: {{ toYaml $nodepool.userDataFile | indent 2 }}
 userDomainId: {{ $nodepool.userDomainId }}
 userDomainName: {{ $nodepool.userDomainName }}
 userId: {{ $nodepool.userId }}
@@ -97,7 +97,7 @@ netId: {{ $nodepool.netId }}
 netName: {{ $nodepool.netName }}
 novaNetwork: false
 password: {{ $nodepool.password }}
-privateKeyFile: {{ $nodepool.privateKeyFile }}
+privateKeyFile: {{ toYaml $nodepool.privateKeyFile | indent 2 }}
 region: {{ $nodepool.region }}
 secGroups: {{ $nodepool.secGroups }}
 sshPort: "{{ $nodepool.sshPort }}"
@@ -106,7 +106,7 @@ tenantDomainId: {{ $nodepool.tenantDomainId }}
 tenantDomainName: {{ $nodepool.tenantDomainName }}
 tenantId: {{ $nodepool.tenantId }}
 tenantName: {{ $nodepool.tenantName }}
-userDataFile: {{ $nodepool.userDataFile }}
+userDataFile: {{ toYaml $nodepool.userDataFile | indent 2 }}
 userDomainId: {{ $nodepool.userDomainId }}
 userDomainName: {{ $nodepool.userDomainName }}
 userId: {{ $nodepool.userId }}
