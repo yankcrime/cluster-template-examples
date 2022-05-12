@@ -10,9 +10,9 @@ applicationCredentialName: {{ $nodepool.applicationCredentialName }}
 applicationCredentialSecret: {{ $nodepool.applicationCredentialSecret }}
 authUrl: {{ $nodepool.authUrl }}
 availabilityZone: {{ $nodepool.availabilityZone }}
-bootFromVolume: false
+bootFromVolume: {{ $nodepool.bootFromVolume }}
 cacert: {{ $nodepool.cacert }}
-configDrive: false
+configDrive: {{ $nodepool.configDrive }}
 common:
 {{- if $nodepool.labels }}
   labels:
@@ -70,9 +70,9 @@ applicationCredentialName: {{ $nodepool.applicationCredentialName }}
 applicationCredentialSecret: {{ $nodepool.applicationCredentialSecret }}
 authUrl: {{ $nodepool.authUrl }}
 availabilityZone: {{ $nodepool.availabilityZone }}
-bootFromVolume: false
+bootFromVolume: {{ $nodepool.bootFromVolume }}
 cacert: {{ $nodepool.cacert }}
-configDrive: false
+configDrive: {{ $nodepool.configDrive }}
 common:
 {{- if $nodepool.labels }}
   labels:
