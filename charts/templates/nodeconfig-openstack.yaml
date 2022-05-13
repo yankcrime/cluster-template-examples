@@ -54,7 +54,7 @@ username: {{ $nodepool.username }}
 volumeDevicePath: {{ $nodepool.volumedevicepath }}
 volumeId: {{ $nodepool.volumeId }}
 volumeName: {{ $nodepool.volumeName }}
-volumeSize: {{ $nodepool.volumeSize }}
+volumeSize: "{{ $nodepool.volumeSize }}"
 volumeType: {{ $nodepool.volumeType }}
 ---
 {{- end }}
@@ -114,7 +114,7 @@ username: {{ $nodepool.username }}
 volumeDevicePath: {{ $nodepool.volumedevicepath }}
 volumeId: {{ $nodepool.volumeId }}
 volumeName: {{ $nodepool.volumeName }}
-volumeSize: {{ $nodepool.volumeSize }}
+volumeSize: "{{ $nodepool.volumeSize }}"
 volumeType: {{ $nodepool.volumeType }}
 {{- end }}
 {{- end }}
