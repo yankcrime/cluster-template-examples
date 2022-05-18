@@ -116,7 +116,15 @@ spec:
       {{- end }}
       {{- if (((.Values.rke).machineGlobalConfig).tls_san) }}
       tls-san:
-        {{ toYaml .Values.rke.machineGlobalConfig.tls_san }}
+        {{- range .Values.rke.machineGlobalConfig.tls_san }}
+        - {{ . }}
+        {{- end }}
+      {{- end }}
+      {{- if (((.Values.rke).machineGlobalConfig).controller_manager_args) }}
+      kube-controller-manager-arg:
+        {{- range .Values.rke.machineGlobalConfig.controller_manager_args }}
+        - {{ . }}
+        {{- end }}
       {{- end }}
     controlPlaneConfig:
       # Path to the file that defines the audit policy configuration
