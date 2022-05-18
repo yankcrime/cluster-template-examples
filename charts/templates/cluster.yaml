@@ -114,6 +114,10 @@ spec:
       {{- else }}
       cni: calico
       {{- end }}
+      {{- if (((.Values.rke).machineGlobalConfig).tls_san) }}
+      tls-san:
+        {{ toYaml .Values.rke.machineGlobalConfig.tls_san }}
+      {{- end }}
     controlPlaneConfig:
       # Path to the file that defines the audit policy configuration
       # audit-policy-file: ""
