@@ -126,6 +126,19 @@ spec:
         - {{ . }}
         {{- end }}
       {{- end }}
+    {{ if ((.Values.rke).machineSelectorConfig) }}
+    machineSelectorConfig:
+      {{- if (((.Values.rke).machineSelectorConfig).cloud_provider) }}
+      - config:
+          cloud-provider-name: {{ .Values.rke.machineSelectorConfig.cloud_provider }}
+          {{- if (((.Values.rke).machineSelectorConfig).kubelet_arg) }}
+          kubelet-arg:
+            {{- range .Values.rke.machineSelectorConfig.kubelet_arg }}
+            - {{ . }}
+            {{- end }}
+          {{- end }}
+      {{- end }}
+    {{- end }}
     controlPlaneConfig:
       # Path to the file that defines the audit policy configuration
       # audit-policy-file: ""
