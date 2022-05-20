@@ -30,6 +30,9 @@ spec:
   # specify rancher helm chart values deployed into downstream cluster
   # rancherValues: {}
   rkeConfig:
+    {{- if .Values.additionalManifest }}
+    additionalManifest: {{ toYaml $.Values.additionalManifest | indent 2 }}
+    {{- end }}
     {{- if ne .Values.cloudprovider "custom" }}
     machinePools:
     {{- if .Values.nodepools }} {{ range $index, $nodepool := .Values.nodepools }}
