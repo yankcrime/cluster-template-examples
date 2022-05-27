@@ -40,7 +40,7 @@ spec:
       etcdRole: {{ $nodepool.etcd }}
       workerRole: {{ $nodepool.worker }}
       quantity: {{ $nodepool.quantity }}
-      name: {{ $nodepool.name }}
+      name: {{ $.Values.cluster.name }}-{{ $nodepool.name }}
       machineConfigRef:
         {{- if eq $.Values.cloudprovider "amazonec2" }}
         kind: Amazonec2Config
@@ -55,7 +55,7 @@ spec:
         {{- else if eq $.Values.cloudprovider "openstack" }}
         kind: OpenstackConfig
         {{- end}}
-        name: {{ $nodepool.name }}
+        name: {{ $.Values.cluster.name }}-{{ $nodepool.name }}
       paused: {{ $nodepool.paused }}
       displayName: {{ $nodepool.displayName }}
       {{- if $nodepool.rollingUpdate }}
@@ -79,7 +79,7 @@ spec:
       etcdRole: {{ $nodepool.etcd }}
       workerRole: {{ $nodepool.worker }}
       quantity: {{ $nodepool.quantity }}
-      name: {{ $nodepool.name }}
+      name: {{ $.Values.cluster.name }}-{{ $nodepool.name }}
       machineConfigRef:
         {{- if eq $.Values.cloudprovider "amazonec2" }}
         kind: Amazonec2Config
@@ -92,7 +92,7 @@ spec:
         {{- else if eq $.Values.cloudprovider "azure" }}
         kind: AzureConfig
         {{- end}}
-        name: {{ $nodepool.name }}
+        name: {{ $.Values.cluster.name }}-{{ $nodepool.name }}
       paused: {{ $nodepool.paused }}
       displayName: {{ $nodepool.displayName }}
       {{- if $nodepool.rollingUpdate }}

@@ -63,7 +63,7 @@ volumeType: {{ $nodepool.volumeType }}
 apiVersion: rke-machine-config.cattle.io/v1
 kind: OpenstackConfig
 metadata:
-  name: {{ $nodepool.name }}
+  name: {{ $.Values.cluster.name }}-{{ $nodepool.name }}
   namespace: fleet-default
 applicationCredentialId: {{ $nodepool.applicationCredentialId }}
 applicationCredentialName: {{ $nodepool.applicationCredentialName }}
