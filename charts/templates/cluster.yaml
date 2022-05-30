@@ -31,7 +31,7 @@ spec:
   # rancherValues: {}
   rkeConfig:
     {{- if .Values.additionalManifest }}
-    additionalManifest: {{ toYaml $.Values.additionalManifest | indent 2 }}
+    additionalManifest: {{ toYaml $.Values.additionalManifest | nindent 4 }}
     {{- end }}
     {{- if ne .Values.cloudprovider "custom" }}
     machinePools:
